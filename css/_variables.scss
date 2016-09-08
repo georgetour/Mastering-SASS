@@ -1,0 +1,30 @@
+/* In SASS we define a variable and then we call normally as we would in a 
+programming language COOL! So if the variable value changes it changes everywhere.
+No need for repeating */
+
+
+// COLORS
+$text-color: #222222;
+$theme-color: #170a48;
+$secondary-color: #f27731;
+$ternary-color : #ccf962;
+$link-color: $secondary-color;
+$menu-item-color: white;
+
+
+//FONTS
+$text-font: Verdana, Arial, sans-serif;
+$headline-font : 'Palatino Linotype', Georgia, serif;
+
+//SIZES
+$content-width: 960px;
+$header-height: 60px;
+$footer-height: 90px;
+
+//CODE COLORS
+
+$var-value-Color : rgb(123,102,220);
+$sublime-color : rgb(39,40,34) ;
+
+//BORDER
+$simpleBorder : 1px solid black;

@@ -1,0 +1,135 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SASS course</title>
+  <meta name="description" content="On this site, I share my thoughts and gain readers.">
+
+  <link rel="stylesheet" href="css/main.min.css">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <header id="header">
+    <nav id="main-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contact.html">Get in Touch</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+<div id="main" role="main">
+
+    <article id="content">
+      <h1>Welcome to SASS!</h1>
+      <section id="introduction">
+
+        <!--Variables section-->
+        <div class="featureBorder">
+          <h3>Variables</h3>
+          <p>In SASS we define a variable by adding the $ in front and then we call it normally as we would in a
+           programming language COOL! So if the variable value changes it changes everywhere.
+           No need for repeating.
+          </p>
+          <p class="sublimeColor">//Example :<br>
+          $text-color : <span>white;</span>
+          </p>
+
+        </div>
+          <!--End Variables section-->
+
+
+        <!-- Partial -->
+        <div class="featureBorder">
+
+            <h3>Partial</h3>
+        <p>Also we can use partial and get variables from another underscored  scss file .We just put @import rule what to get.</p>
+        <p class="sublimeColor"> </p>
+        <pre>
+        @import "variables" ;
+
+        </pre>
+       </div>
+          <!--End Partial -->
+
+          <div class="featureBorder">
+        <h3>Mixin</h3>
+        <p>
+        Mixin is a very improtant feature of SASS. We combine a lot of stuff together.
+        We name in like this :
+        </p>
+        <pre>
+        @mixin warning{
+          background-color: orange;
+	      color: white ;
+        }
+        </pre>
+        <p>And we take it :</p>
+        <pre>
+        .warning-button{
+          @include warning;
+        }
+        </pre>
+          <p>or to get multiple properties by this syntax</p>
+        <pre>
+        @mixin large-text{
+         font:{
+         size: 40px;
+         weight: bold ;
+         }
+        }
+        </pre>
+        </div>
+
+        <div class="featureBorder">
+          <h3>Nested mixins</h3>
+          <p>We can nest a mixin or multiple mixing inside other mixins.</p>
+         <pre>
+         @mixin rounded{
+           border-radius:6px;
+         }
+
+         @mixin box{
+             @include rounded;
+	     background-color: #000088;
+
+         }
+         </pre>
+        </div>
+
+
+        <button class="warning-button">Created with mixin</button>
+
+      </section>
+      <section id="promo">
+        <h2>Check Out My Work</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex omnis atque illo odio labore, debitis, qui quo? Odio similique illum eligendi distinctio repellendus quod inventore, aliquam modi, recusandae labore dignissimos aperiam expedita unde ea rem iusto magni ipsum nisi neque!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam eum quod et provident consectetur dolores, itaque quae <a href="#">dignissimos voluptatem</a>, accusamus, aut omnis ipsa quidem error magni facilis excepturi explicabo repudiandae. Velit beatae, facere magni. Odio obcaecati possimus reiciendis incidunt quo expedita quis ipsum quibusdam omnis, numquam beatae minima iure tenetur impedit totam ea esse deleniti eum? Minima maiores expedita, accusamus.</p>
+      </section>
+
+    </article>
+
+    <aside id="sidebar">
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <footer id="footer">
+    
+  </footer>
+</body>
+</html>
