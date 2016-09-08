@@ -3,5 +3,5 @@
 <br>Simple steps on how SASS  works so you can understand and master it.
 
 -TO DO
-Soon will add how to install it.
+Soon will add how to install itand finish the project
 
