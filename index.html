@@ -43,8 +43,17 @@
           $text-color : <span>white;</span>
           </p>
 
+            <p>
+                We now can use this variable :
+            </p>
+        <pre>
+        body {
+            font-family: sans-serif;
+            color: $text-color;
+        }
+        </pre>
         </div>
-          <!--End Variables section-->
+       <!--End Variables section-->
 
 
         <!-- Partial -->
@@ -52,8 +61,14 @@
 
             <h3>Partial</h3>
         <p>Also we can use partial and get variables from another underscored  scss file .We just put @import rule what to get.</p>
-        <p class="sublimeColor"> </p>
+        We create a file that will hold all variables called : _variables.scss
+            <p class="sublimeColor"> </p>
+
+        <p>And we call the file where we will use it like that:</p>
+
+
         <pre>
+
         @import "variables" ;
 
         </pre>
