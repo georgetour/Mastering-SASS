@@ -1,3 +1,9 @@
+@mixin google-fonts($font){
+  $font:unquote($font);
+  @import url(https://fonts.googleapis.com.css?family=#{$font});
+}
+
+
 @mixin warning{
   background-color: orange;
   color: white ;
@@ -11,19 +17,31 @@
   }
 }
 
-@mixin rounded{
-  border-radius:6px;
+@mixin rounded($radius:6px) {
+  border-radius:$radius;
 }
 
-@mixin box{
-  @include rounded;
+@mixin box($radius : 6px, $border :1px solid black){
+  @include rounded($radius);
   background-color: #000088;
+  border: $border;
+}
 
+@mixin box-shadow($shadows...){
+  box-shadow: $shadows;
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
 }
 
 @mixin fancy-links{
   a{
     font-style :italic;
     text-decoration: none;
+  }
+}
+
+@mixin apply-to-ie-6{
+  * html{
+    @content ;
   }
 }

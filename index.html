@@ -30,6 +30,12 @@
 
     <article id="content">
       <h1>Welcome to SASS!</h1>
+        <p>SASS is a preprocessor that makes CSS more powerful since you can work with variables, partial, mixin, nesting,arguments
+        and many other amazing features that you find only in programming languages.
+        </p>
+        <p>In SASS we can use use SASS or SCSS syntax. Most people use SCSS syntax since it uses
+        exactly the CSS syntax.
+        </p>
       <section id="introduction">
 
         <!--Variables section-->
@@ -58,28 +64,24 @@
 
         <!-- Partial -->
         <div class="featureBorder">
-
             <h3>Partial</h3>
         <p>Also we can use partial and get variables from another underscored  scss file .We just put @import rule what to get.</p>
         We create a file that will hold all variables called : _variables.scss
             <p class="sublimeColor"> </p>
-
-        <p>And we call the file where we will use it like that:</p>
-
+            <p>SCSS @import works like javascript require and PHP include.We call the file where we will use it like that:</p>
 
         <pre>
-
         @import "variables" ;
-
         </pre>
        </div>
           <!--End Partial -->
 
-          <div class="featureBorder">
+       <!--Mixin-->
+       <div class="featureBorder">
         <h3>Mixin</h3>
         <p>
-        Mixin is a very improtant feature of SASS. We combine a lot of stuff together.
-        We name in like this :
+        Mixin is a very important feature of SASS. We combine a lot of stuff together.
+        We name it like this :
         </p>
         <pre>
         @mixin warning{
@@ -87,7 +89,7 @@
 	      color: white ;
         }
         </pre>
-        <p>And we take it :</p>
+        <p>And we call it :</p>
         <pre>
         .warning-button{
           @include warning;
@@ -96,14 +98,16 @@
           <p>or to get multiple properties by this syntax</p>
         <pre>
         @mixin large-text{
-         font:{
-         size: 40px;
-         weight: bold ;
+            font:{
+            size: 40px;
+            weight: bold ;
          }
         }
         </pre>
         </div>
+        <!--End Mixin-->
 
+        <!--Nested Mixin-->
         <div class="featureBorder">
           <h3>Nested mixins</h3>
           <p>We can nest a mixin or multiple mixing inside other mixins.</p>
@@ -115,13 +119,150 @@
          @mixin box{
              @include rounded;
 	     background-color: #000088;
-
          }
          </pre>
         </div>
+        <!--End Nested mixin-->
+
+          <!--Mixin Arguments-->
+          <div class="featureBorder">
+              <h3>Mixin Arguments</h3>
+              <p>We can have mixins with arguments like in programming language.</p>
+         <pre>
+         @mixin rounded($radius) {
+           border-radius:$radius;
+         }
+         </pre>
+         <p>
+             And we take it by passing the parameter we want at parenthesis :
+         </p>
+         <pre>
+         @mixin box{
+           @include rounded(5px);
+           background-color: #000088;
+         }
+         </pre>
+         <p>Or a little more complicated with default values so you don't have to pass arguments</p>
+
+        <pre>
+        @mixin rounded($radius : 6px) {
+            border-radius:$radius;
+        }
+
+        @mixin box($radius : 6px, $border :1px solid black){
+            @include rounded($radius);
+            background-color: #000088;
+            border: $border;
+        }
+        </pre>
+        <p>And if we call it we can only pass the argument we want and the other will be our default</p>
+        <pre>
+        #header{
+	    @include box($border :1px solid pink);
+        }
+        </pre>
+         </div>
+          <!--End Mixin Arguments-->
+
+       <!-- Variable argument/arglist -->
+        <div class="featureBorder">
+           <h3>Variable argument/arglist</h3>
+           <p>With the syntax below we don't predefine how many arguments
+              and we can pass as many as we want.Check the three dots after the argument.
+           </p>
+        <pre>
+        @mixin box-shadow($shadows...){
+            box-shadow: $shadows;
+            -moz-box-shadow: $shadows;
+            -webkit-box-shadow: $shadows;
+        }
+        </pre>
+            <p>And it works like this:</p>
+        <pre>
+            $shadow1 : 10px 10px 5px #888888;
+            $shadow2 : -5px 5px 3px green;
+
+            #header {
+	        @include box-shadow($shadow1,$shadow2);
+            }
+        </pre>
+
+        </div>
+         <!--Browser hacks with mixin -->
+          <div class="featureBorder">
+              <h3>Browser hacks with mixin</h3>
+              <p>Using mixin you can apply specific attributes to each browser with browser hacks.
+
+              </p>
+        <pre>
+            @mixin apply-to-ie-6{
+                * html{
+                @content ;
+                }
+            }
+        </pre>
+              <p>So we are taking the mixin and we will apply it only to ie6.</p>
+        <pre>
+            @include apply-to-ie-6{
+	        body{
+		    color: #000088;
+                }
+            }
+        </pre>
+        <a href="https://css-tricks.com/snippets/css/browser-specific-hacks/">Find all the browser hacks here</a>
+          </div>
+
+        <!--@import fonts-->
+        <div class="featureBorder">
+              <h3>@import fonts</h3>
+              <p>Let's see how you can import font in SASS.</p>
+            <p>Using interpolation with #{$variableHere} only.Can only be used with import. </p>
+        <pre>
+            @mixin google-fonts($font){
+             $font:unquote($font);
+            @import url(https://fonts.googleapis.com.css?family=<span>#{$font}</span>);
+            }
+        </pre>
+        <pre>
+            $text-font: "Alegreya Sans", Arial, sans-serif;
+            $headline-font : "Titillium Web", Georgia, serif;
+        </pre>
+            <p>And you call it like that:</p>
+        <pre>
+            @include google-fonts("Alegreya+Sans");
+            @include google-fonts("Titillium+Web");
+
+            h1, h2, h3, h4 {
+            font-family: $headline-font;
+            }
+        </pre>
+
+        </div>
+        <!--End import fonts-->
+
+          <!--@media -->
+          <div class="featureBorder">
+              <h3>Media queries</h3>
+              <p>Same syntax as CSS media queries but more powerful since we can nest them where we want.</p>
+        <pre>
+            #main {
+	        width: $content-width;
+	        @media only screen and (max-width: 960px){
+                width: auto;
+		max-width: $content-width;
+            }
+        </pre>
 
 
-        <button class="warning-button">Created with mixin</button>
+          </div>
+          <!--End media queries-->
+
+
+
+
+          <button class="warning-button">Created with mixin</button>
+
+
 
       </section>
       <section id="promo">

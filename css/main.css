@@ -1,12 +1,14 @@
 /* In SASS we define a variable and then we call normally as we would in a 
 programming language COOL! So if the variable value changes it changes everywhere.
 No need for repeating */
+@import url(https://fonts.googleapis.com.css?family=Alegreya+Sans);
+@import url(https://fonts.googleapis.com.css?family=Titillium+Web);
 a {
   font-style: italic;
   text-decoration: none; }
 
 body {
-  font-family: sans-serif;
+  font-family: "Alegreya Sans", Arial, sans-serif;
   color: #222222; }
 
 span {
@@ -22,14 +24,11 @@ span {
   color: white; }
 
 h1, h2, h3, h4 {
-  font-family: "Palatino Linotype", Georgia, serif; }
+  font-family: "Titillium Web", Georgia, serif; }
 
 h1 {
   font-size: 40px;
   font-weight: bold; }
-
-p {
-  font-family: Verdana, Arial, sans-serif; }
 
 a {
   color: #f27731; }
@@ -38,22 +37,30 @@ a {
   background-color: orange;
   color: white; }
 
+* html body {
+  color: #000088; }
+
 #header {
+  box-shadow: 10px 10px 5px #888888, -5px 5px 3px green;
+  -moz-box-shadow: 10px 10px 5px #888888, -5px 5px 3px green;
+  -webkit-box-shadow: 10px 10px 5px #888888, -5px 5px 3px green;
   border-radius: 6px;
   background-color: #000088;
-  height: 60px; }
-  #header #main-menu {
-    vertical-align: middle;
-    line-height: 60px; }
-    #header #main-menu li {
-      display: inline; }
-    #header #main-menu a {
-      color: white; }
+  border: 1px solid pink;
+  line-height: 40px; }
+  #header #main-menu li {
+    display: inline-block; }
+  #header #main-menu a {
+    color: white; }
 
 #main {
   width: 960px;
   margin-left: auto;
   margin-right: auto; }
+  @media only screen and (max-width: 960px) {
+    #main {
+      width: auto;
+      max-width: 960px; } }
 
 #footer {
   height: 90px;

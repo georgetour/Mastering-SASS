@@ -1,12 +1,14 @@
 @import "variables" ;
 @import "mixins";
 
+@include google-fonts("Alegreya+Sans");
+@include google-fonts("Titillium+Web");
 
 @include fancy-links;
 
 
 body {
-  font-family: sans-serif;
+  font-family: $text-font;
   color: $text-color;
 }
 
@@ -35,30 +37,32 @@ h1{
 	@include large-text;
 }
 
-p {
-  font-family: $text-font;
 
-}
 
 a {
-
-color: $link-color;
+	color: $link-color;
 }
 
 .warning-button{
 @include warning;
 }
 
+@include apply-to-ie-6{
+	body{
+		color: #000088;
+	}
+}
+
 #header {
-	@include box;
-	height: $header-height;
+	@include box-shadow($shadow1,$shadow2);
+	@include box($border :1px solid pink);
+	line-height: $header-height;
 
 
   #main-menu {
-	  vertical-align: middle;
-	  line-height: 60px;
+
 	li{
-		display: inline;
+		display: inline-block;
 	}
 	a{
 		color:$menu-item-color;
@@ -73,6 +77,10 @@ color: $link-color;
 
 #main {
 	width: $content-width;
+	@media only screen and (max-width: 960px){
+		width: auto;
+		max-width: $content-width;
+	}
 	margin-left: auto;
 	margin-right: auto;
 	
