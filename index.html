@@ -36,6 +36,27 @@
         <p>In SASS we can use use SASS or SCSS syntax. Most people use SCSS syntax since it uses
         exactly the CSS syntax.
         </p>
+
+
+        <section>
+            <h2>Why you should use it?</h2>
+            <p>As you master CSS and your projects become bigger you will notice that
+            you 'll have some repeating stuff all over your CSS code. SASS will give
+            you power and simplicity as I said above.
+            </p>
+            <p>For example let's say your client wants the color of some specific articles
+            to be changed .Those articles have classes with many properties.If you had stored
+                the color in a variable thanks to SASS instead of changing it everywhere
+                you just change the variable value .
+            </p>
+        </section>
+        <section>
+            <h2>Who should use it?</h2>
+            <p>You should use it, if you believe you are in a pretty good level in CSS.</p>
+            <p>Also if you want to work as front-end developer in a company many companies
+            require it.
+            </p>
+        </section>
       <section id="introduction">
 
         <!--Variables section-->
@@ -125,7 +146,7 @@
         <!--End Nested mixin-->
 
           <!--Mixin Arguments-->
-          <div class="featureBorder">
+        <div class="featureBorder">
               <h3>Mixin Arguments</h3>
               <p>We can have mixins with arguments like in programming language.</p>
          <pre>
@@ -161,8 +182,8 @@
 	    @include box($border :1px solid pink);
         }
         </pre>
-         </div>
-          <!--End Mixin Arguments-->
+       </div>
+       <!--End Mixin Arguments-->
 
        <!-- Variable argument/arglist -->
         <div class="featureBorder">
@@ -186,8 +207,9 @@
 	        @include box-shadow($shadow1,$shadow2);
             }
         </pre>
-
         </div>
+        <!--End Variables arguments
+
          <!--Browser hacks with mixin -->
           <div class="featureBorder">
               <h3>Browser hacks with mixin</h3>
@@ -220,7 +242,7 @@
         <pre>
             @mixin google-fonts($font){
              $font:unquote($font);
-            @import url(https://fonts.googleapis.com.css?family=<span>#{$font}</span>);
+             @import url(https://fonts.googleapis.com.css?family=<span>#{$font}</span>);
             }
         </pre>
         <pre>
@@ -240,49 +262,234 @@
         </div>
         <!--End import fonts-->
 
-          <!--@media -->
-          <div class="featureBorder">
+         <!--@media -->
+        <div class="featureBorder">
               <h3>Media queries</h3>
               <p>Same syntax as CSS media queries but more powerful since we can nest them where we want.</p>
-        <pre>
+         <pre>
             #main {
 	        width: $content-width;
 	        @media only screen and (max-width: 960px){
                 width: auto;
-		max-width: $content-width;
+                max-width: $content-width;
             }
-        </pre>
+         </pre>
+        </div>
+       <!--End media queries-->
 
+       <!--Using mixins for multiple media queries-->
+        <div class="featureBorder">
+              <h3>Using mixins for multiple media queries</h3>
+              <p>We can use mixins with multiple media queries so if we want to change
+              something everywhere we can do it really easily.
+              </p>
+         <pre>
+            @mixin xsmall-screens{
+                @media only screen and (max-width:320px){
+                @content;
+                }
+            }
+            @mixin small-screens{
+                @media only screen and (max-width:480px){
+                @content;
+                }
+            }
+            @mixin medium-screens{
+                @media only screen and (max-width:680px){
+                @content;
+                }
+            }
+            @mixin large-screens{
+                @media only screen and (max-width:960px){
+                @content;
+                }
+            }
+
+         </pre>
+         <p>And we call the mixin we want where we want simple like that:</p>
+            <pre>
+            body{
+                @include large-screens{
+                font-size: 120%
+                }
+            }
+            </pre>
 
           </div>
-          <!--End media queries-->
+          <!--End multiple media queries-->
+
+          <!--Using calculations with SASS-->
+          <div class="featureBorder">
+              <h3>Using calculations with SASS</h3>
+          <p>In SASS we can use arithmetic calculations.But to do so it has to be
+              SASS syntax  else it won't work correctly.Also you can
+              do calculations between different types but they must be compatible
+              each other.
+          </p>
+              <p>Open your command prompt and type sass --interactive.</p>
+              <img style="width: 700px" src="images/sass%20calculations.jpg">
+              <p>In some calculations you must put parenthesis or make them with variables.Also some units don't
+              work together.
+              </p>
+
+          </div>
+
+          <!-- SASS functions-->
+          <div class="featureBorder">
+              <h3>SASS functions</h3>
+              <p>In CSS we already have some functions which you probably know like
+              rgb, rgba, hsl and hsla. SASS gives us more power with more functions and
+                  the ability to create our own.4 of the most used ones are darken, lighten, transparentize and opacify.
+              </p>
+             <p>With the code below we are using the darken function and we are
+             saying make the $link-color darker by 15% when we hover on it.
+             </p>
+            <pre>
+            a {
+	            color: $link-color;
+
+	            &:hover{
+		        color: darken($link-color,15%);
+	            }
+            }
+
+            </pre>
+              <p>Lighten function:</p>
+            <pre>
+            @mixin warning{
+                background-color: orange;
+                color: white ;
+
+                &:hover{
+                background-color: lighten(orange,30%);
+                }
+            }
+            </pre>
+              <p>Hover on the orange button below to see what we did easily with the above mixin.</p>
+              <button class="warning-button">Created with mixin</button>
+
+              <p>Also we have transparentize and opacify functions.Opacity is just the opposite of transperency. If something is 100% opaque,
+                  then it's 0% transperent. </p>
+            <pre>
+            #main-menu {
+              a{
+                color:$menu-item-color;
+                padding: 6px 8px;
+                border-bottom: 1px solid transparentize(#fefefe,1);
+                transition: border-bottom 0.5s;
+                transition-timing-function: ease-in-out;
+
+                &:hover{
+                border-bottom: 1px solid opacify(#fefefe,0.5);
+                }
+              }
+            }
+            </pre>
+              <p>Check the menu bar at top to see how it works.</p>
+          </div>
+          <!--End SASS functions-->
+
+          <!--Creating our own SASS functions-->
+          <div class="featureBorder">
+              <h3>Creating our own SASS functions</h3>
+              <p>Just create a file _functions.scss and call it at main.scss @import "functions" ; .
+              Then like mixins by saying @function name
+              and we return value with @return.Let's see them in action :
+              </p>
+
+            <p> Here with this function we will have em if we give pixels</p>
+            <pre>
+
+            @function em($pixels,$context:16px){
+                @return ($pixels/$context)*1em;
+            }
+
+            </pre>
+              <p>A function that has default 12 columns 100% page
+                  width and 1% gap between the columns and return equally split columns.
+              </p>
+            <pre>
+            @function col-width($columns:12,$page-width:100%,$gap:1%){
+                @return ($page-width - $gap*($columns)) / $columns;
+            }
+            </pre>
+
+              <p>Below we have at main.scss six equally split columns by using the function col-width :</p>
+
+            <pre>
+            .sidebar {
+                display: inline-block;
+                width:2 * col-width();
+                background-color: lightgray;
+            }
+            </pre>
+              <div class="alignCenter">
+                  <aside class="sidebar">
+                      <ul>
+                          <div>Column 1</div>
+                          <li>Item 1</li>
+                          <li>Item 2</li>
+                          <li>Item 3</li>
+                          <li>Item 4</li>
+                      </ul>
+                  </aside>
+                  <aside class="sidebar">
+                      <ul>
+                          <div>Column 2</div>
+                          <li>Item 1</li>
+                          <li>Item 2</li>
+                          <li>Item 3</li>
+                          <li>Item 4</li>
+                      </ul>
+                  </aside>
+                  <aside class="sidebar">
+                      <ul>
+                          <div>Column 3</div>
+                          <li>Item 1</li>
+                          <li>Item 2</li>
+                          <li>Item 3</li>
+                          <li>Item 4</li>
+                      </ul>
+                  </aside>
+                  <aside class="sidebar">
+                      <ul>
+                          <div>Column 4</div>
+                          <li>Item 1</li>
+                          <li>Item 2</li>
+                          <li>Item 3</li>
+                          <li>Item 4</li>
+                      </ul>
+                  </aside>
+                  <aside class="sidebar">
+                      <ul>
+                          <div>Column 5</div>
+                          <li>Item 1</li>
+                          <li>Item 2</li>
+                          <li>Item 3</li>
+                          <li>Item 4</li>
+                      </ul>
+                  </aside>
+                  <aside class="sidebar">
+                      <ul>
+                          <div>Column 6</div>
+                          <li>Item 1</li>
+                          <li>Item 2</li>
+                          <li>Item 3</li>
+                          <li>Item 4</li>
+                      </ul>
+                  </aside>
+              </div>
+          </div>
 
 
-
-
-          <button class="warning-button">Created with mixin</button>
-
-
-
-      </section>
-      <section id="promo">
-        <h2>Check Out My Work</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex omnis atque illo odio labore, debitis, qui quo? Odio similique illum eligendi distinctio repellendus quod inventore, aliquam modi, recusandae labore dignissimos aperiam expedita unde ea rem iusto magni ipsum nisi neque!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam eum quod et provident consectetur dolores, itaque quae <a href="#">dignissimos voluptatem</a>, accusamus, aut omnis ipsa quidem error magni facilis excepturi explicabo repudiandae. Velit beatae, facere magni. Odio obcaecati possimus reiciendis incidunt quo expedita quis ipsum quibusdam omnis, numquam beatae minima iure tenetur impedit totam ea esse deleniti eum? Minima maiores expedita, accusamus.</p>
+          <!--End Creating SASS functions-->
       </section>
 
     </article>
 
-    <aside id="sidebar">
-      <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-        <li>Item 4</li>
-      </ul>
-    </aside>
 
-  </div>
+
+</div>
 
   <footer id="footer">
     

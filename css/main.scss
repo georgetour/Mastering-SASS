@@ -1,5 +1,7 @@
+@import "functions";
 @import "variables" ;
 @import "mixins";
+
 
 @include google-fonts("Alegreya+Sans");
 @include google-fonts("Titillium+Web");
@@ -10,11 +12,16 @@
 body {
   font-family: $text-font;
   color: $text-color;
+  font-size:em(18px) ;
+
+	@include large-screens{
+		font-size: 120%;
+	}
+
 }
 
 span{
 	color: $var-value-Color;
-
 }
 
 .featureBorder{
@@ -38,9 +45,12 @@ h1{
 }
 
 
-
 a {
 	color: $link-color;
+
+	&:hover{
+		color: darken($link-color,15%);
+	}
 }
 
 .warning-button{
@@ -66,6 +76,14 @@ a {
 	}
 	a{
 		color:$menu-item-color;
+		padding: 6px 8px;
+		border-bottom: 1px solid transparentize(#fefefe,1);
+		transition: border-bottom 0.5s;
+		transition-timing-function: ease-in-out;
+
+		&:hover{
+			border-bottom: 1px solid opacify(#fefefe,0.5);
+		}
 
 	}
   }
@@ -77,22 +95,47 @@ a {
 
 #main {
 	width: $content-width;
-	@media only screen and (max-width: 960px){
+	@include large-screens {
 		width: auto;
 		max-width: $content-width;
 	}
 	margin-left: auto;
 	margin-right: auto;
-	
 
-  #content {
-  }
+	#content {
+		display: inline-block;
 
-  #sidebar {
-  }
+	}
+
+
+	.sidebar {
+		display: inline-block;
+		width:2 * col-width();
+		background-color: lightgray;
+	}
+	ul{
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		list-style-type: none;
+		display: block;
+		margin: 0;
+		padding: 0;
+
+		&:hover {
+			background-color: #efefef;
+		}
+	}
+
+}
+.alignCenter {
+	text-align: center;
 }
 
 #footer {
-height: $footer-height ;
-background-color:$ternary-color;
+
+	height: $footer-height ;
+	background-color:$ternary-color;
 }
