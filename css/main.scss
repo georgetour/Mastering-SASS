@@ -8,11 +8,54 @@
 
 @include fancy-links;
 
+@include apply-to-ie-6{
+	body{
+		color: #000088;
+	}
+}
+
+@mixin warning-button{
+	@include warning;
+}
+
+.warning-button{
+	@include warning-button;
+}
+
+
+.error{
+	color: red;
+}
+
+.critical-error{
+	@extend .error;
+	border: 1px solid red;
+	font-weight: bold;
+}
+
+%highlight{
+	font-style: italic;
+}
+
+.sub-title{
+	@extend %highlight;
+	@extend .doIExist !optional;
+}
+
+.cta-button{
+	@include warning-button;
+	@include rounded;
+}
+
+
+
 
 body {
-  font-family: $text-font;
+
+  font-family: $text-font ;
   color: $text-color;
-  font-size:em(18px) ;
+  font-size:em(30px) ;
+
 
 	@include large-screens{
 		font-size: 120%;
@@ -20,15 +63,28 @@ body {
 
 }
 
+.featureBorder {
+	border: $simpleBorder;
+	position: relative;
+	margin-top: 20px;
+	padding: 10px;
+
+}
+
+.anchor {
+	@include anchor;
+}
+
+.anchor:target {
+	padding-top: 95px;
+}
+
 span{
 	color: $var-value-Color;
 }
 
-.featureBorder{
-	border: $simpleBorder;
-	margin-top: 5px;
-	padding: 5px;
-}
+
+
 
 .sublimeColor{
 	background-color: $sublime-color;
@@ -46,54 +102,74 @@ h1{
 
 
 a {
-	color: $link-color;
+
 
 	&:hover{
-		color: darken($link-color,15%);
+		color: darken($navbar-color,15%);
 	}
 }
 
-.warning-button{
-@include warning;
-}
 
-@include apply-to-ie-6{
-	body{
-		color: #000088;
-	}
-}
-
-#header {
-	@include box-shadow($shadow1,$shadow2);
-	@include box($border :1px solid pink);
+.navbar{
 	line-height: $header-height;
+	min-height: $header-height;
+}
 
 
   #main-menu {
+	  background-color: $navbar-color;
 
-	li{
-		display: inline-block;
-	}
-	a{
-		color:$menu-item-color;
-		padding: 6px 8px;
-		border-bottom: 1px solid transparentize(#fefefe,1);
-		transition: border-bottom 0.5s;
-		transition-timing-function: ease-in-out;
+	  @include box-shadow($shadow1, $shadow2);
+	  @include box($border: 1px solid pink);
 
-		&:hover{
-			border-bottom: 1px solid opacify(#fefefe,0.5);
-		}
+	  @include navbar-fixed;
 
-	}
+	  .navbar-nav {
+		  li {
+			  .topLinks {
+
+				  padding: 10px;
+				  line-height: 50px;
+			  }
+
+			  .dropdown-menu {
+				  background-color: $navbar-color;
+
+			  }
+
+			  display: inline-block;
+
+			  .menuExtraList {
+				  display: block;
+				  a{
+					  &:hover {
+						  color: darken(black,15%);
+
+
+					  }
+				  }
+		  }
+
+		  }
+		  a {
+			  text-decoration: none;
+			  color: $menu-item-color;
+			  border-bottom: 1px solid transparentize(#fefefe, 1);
+			  transition: border-bottom 0.5s;
+			  transition-timing-function: ease-in-out;
+			  &:hover{
+				  border-bottom: 1px solid opacify(#fefefe,0.5);
+			  }
+		  }
+	  }
   }
-  
   #logo {
 
   }
-}
 
 #main {
+	padding-top: 60px;
+
 	width: $content-width;
 	@include large-screens {
 		width: auto;

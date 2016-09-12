@@ -3,33 +3,63 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SASS course</title>
   <meta name="description" content="On this site, I share my thoughts and gain readers.">
 
-  <link rel="stylesheet" href="css/main.min.css">
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+  <script defer src="javascript/jquery-2.2.4.min.js"></script>
+  <script defer src="javascript/jquery.scrollTo.min.js"></script>
+  <script defer  src="javascript/main.js"></script>
+  <script defer src="javascript/bootstrap.min.js"></script>
 
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+
+  <link  href="css/main.min.css" rel="stylesheet" type="text/css" >
+
 </head>
 
 <body>
-  <header id="header">
-    <nav id="main-menu">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contact.html">Get in Touch</a></li>
+
+    <nav id="main-menu" >
+      <ul id="nav" class="navbar navbar-nav">
+        <li ><a class="scroll topLinks" href="#main">Start</a></li>
+        <li ><a class="scroll topLinks" href="#main">Installation</a></li>
+        <div style="display: inline-block" class="dropdown">
+        <li class=""><a class="scroll topLinks" href="#installation" data-toggle="dropdown">Basic topics</a>
+            <ul class="dropdown-menu">
+                <li class="menuExtraList"><a class="scroll" href="#variables">Variables</a></li>
+                <li class="menuExtraList"><a class="scroll" href="#partial">Partial</a></li>
+                <li class="menuExtraList"><a class="scroll" href="#mixin">Mixin</a></li>
+                <li class="menuExtraList"><a class="scroll" href="#importFonts">@import Fonts</a></li>
+                <li class="menuExtraList"><a class="scroll" href="#media-queries">Media Queries</a></li>
+          </ul>
+        </li>
+        </div>
+          <div style="display: inline-block" class="dropdown">
+              <li><a class="scroll topLinks" href="#installation" data-toggle="dropdown">Advanced topics</a>
+                  <ul class="dropdown-menu">
+                      <li class="menuExtraList"><a class="scroll" href="#calculations">Calculations</a></li>
+                      <li class="menuExtraList"><a class="scroll" href="#functions">Functions</a></li>
+                      <li class="menuExtraList"><a class="scroll" href="#inheritance">Inheritance</a></li>
+                      <li class="menuExtraList"><a class="scroll" href="#extendVSmixin">@extend vs @mixin</a></li>
+                      <li class="menuExtraList"><a class="scroll" href="#media-queries">Media Queries</a></li>
+                  </ul>
+              </li>
+          </div>
+
       </ul>
     </nav>
 
-  </header>
+
 
 <div id="main" role="main">
 
     <article id="content">
-      <h1>Welcome to SASS!</h1>
+      <h1 id="starting">Welcome to SASS!</h1>
         <p>SASS is a preprocessor that makes CSS more powerful since you can work with variables, partial, mixin, nesting,arguments
         and many other amazing features that you find only in programming languages.
         </p>
@@ -60,7 +90,8 @@
       <section id="introduction">
 
         <!--Variables section-->
-        <div class="featureBorder">
+          <div  class="featureBorder">
+          <span id="variables" class="anchor"></span>
           <h3>Variables</h3>
           <p>In SASS we define a variable by adding the $ in front and then we call it normally as we would in a
            programming language COOL! So if the variable value changes it changes everywhere.
@@ -80,13 +111,15 @@
         }
         </pre>
         </div>
+
        <!--End Variables section-->
 
 
         <!-- Partial -->
-        <div class="featureBorder">
+        <div  class="featureBorder">
+        <span id="partial" class="anchor"></span>
             <h3>Partial</h3>
-        <p>Also we can use partial and get variables from another underscored  scss file .We just put @import rule what to get.</p>
+        <p>Also we can use partial and get content from another underscored  scss file .We just put @import rule what to get.</p>
         We create a file that will hold all variables called : _variables.scss
             <p class="sublimeColor"> </p>
             <p>SCSS @import works like javascript require and PHP include.We call the file where we will use it like that:</p>
@@ -98,7 +131,8 @@
           <!--End Partial -->
 
        <!--Mixin-->
-       <div class="featureBorder">
+       <div  class="featureBorder">
+       <span id="mixin" class="anchor"></span>
         <h3>Mixin</h3>
         <p>
         Mixin is a very important feature of SASS. We combine a lot of stuff together.
@@ -148,7 +182,7 @@
           <!--Mixin Arguments-->
         <div class="featureBorder">
               <h3>Mixin Arguments</h3>
-              <p>We can have mixins with arguments like in programming language.</p>
+              <p>We can have mixins with arguments like in a programming language.</p>
          <pre>
          @mixin rounded($radius) {
            border-radius:$radius;
@@ -186,7 +220,7 @@
        <!--End Mixin Arguments-->
 
        <!-- Variable argument/arglist -->
-        <div class="featureBorder">
+        <div id="arglist" class="featureBorder">
            <h3>Variable argument/arglist</h3>
            <p>With the syntax below we don't predefine how many arguments
               and we can pass as many as we want.Check the three dots after the argument.
@@ -208,9 +242,8 @@
             }
         </pre>
         </div>
-        <!--End Variables arguments
-
-         <!--Browser hacks with mixin -->
+        <!--End Variables arguments-->
+        <!--Browser hacks with mixin -->
           <div class="featureBorder">
               <h3>Browser hacks with mixin</h3>
               <p>Using mixin you can apply specific attributes to each browser with browser hacks.
@@ -235,7 +268,8 @@
           </div>
 
         <!--@import fonts-->
-        <div class="featureBorder">
+        <div  class="featureBorder">
+        <span  id="importFonts" class="anchor"></span>
               <h3>@import fonts</h3>
               <p>Let's see how you can import font in SASS.</p>
             <p>Using interpolation with #{$variableHere} only.Can only be used with import. </p>
@@ -263,7 +297,8 @@
         <!--End import fonts-->
 
          <!--@media -->
-        <div class="featureBorder">
+        <div  class="featureBorder">
+        <span  id="media-queries" class="anchor"></span>
               <h3>Media queries</h3>
               <p>Same syntax as CSS media queries but more powerful since we can nest them where we want.</p>
          <pre>
@@ -319,10 +354,12 @@
           <!--End multiple media queries-->
 
           <!--Using calculations with SASS-->
-          <div class="featureBorder">
+          <div  class="featureBorder">
+          <span id="calculations" class="anchor"></span>
+
               <h3>Using calculations with SASS</h3>
           <p>In SASS we can use arithmetic calculations.But to do so it has to be
-              SASS syntax  else it won't work correctly.Also you can
+              CSS syntax  else it won't work correctly.Also you can
               do calculations between different types but they must be compatible
               each other.
           </p>
@@ -336,6 +373,7 @@
 
           <!-- SASS functions-->
           <div class="featureBorder">
+          <span  id="functions" class="anchor"></span>
               <h3>SASS functions</h3>
               <p>In CSS we already have some functions which you probably know like
               rgb, rgba, hsl and hsla. SASS gives us more power with more functions and
@@ -414,7 +452,7 @@
             }
             </pre>
 
-              <p>Below we have at main.scss six equally split columns by using the function col-width :</p>
+              <p>Below we have at main.scss six equally split columns by using the function col-width we created:</p>
 
             <pre>
             .sidebar {
@@ -480,9 +518,175 @@
                   </aside>
               </div>
           </div>
-
-
           <!--End Creating SASS functions-->
+
+          <!--Inheritance with @extend-->
+          <div  class="featureBorder">
+              <span  id="inheritance" class="anchor"></span>
+              <h3>Inheritance with @extend</h3>
+              <p>Sometimes we need to have a class that also has something similar with another class.We need to
+              to remember using both classes or more to achieve that.SASS makes that easy with inheritance
+                  by using @extend inheritFrom.
+              </p>
+            <pre>
+            .error{
+                color: red;
+            }
+
+            .critical-error{
+	            @extend .error;
+	            border: 1px solid red;
+	            font-weight: bold;
+            }
+            </pre>
+            <p>Or we can use any combination we want for example @extend + @include, inheritance and mixin :</p>
+            <pre>
+            .cta-button{
+	            @extend .warning-button;
+	            @include rounded;
+            }
+            </pre>
+              <button class="cta-button">extend+include</button>
+              <h4>Side note for extend</h4>
+              <p>You can't have extend inside a media query if the class is NOT
+              in the same media query.
+              </p>
+              <p class="error">Wrong</p>
+            <pre>
+            .cta-button{
+	            @extend .warning-button;
+	            @include rounded;
+            }
+
+            @media screen and (min-width: 960px) {
+	            .super-cta-button{
+		        @extend .cta-button;
+	            }
+            }
+
+            </pre>
+            <p>Correct</p>
+            <pre>
+            @media screen and (min-width: 960px) {
+	            .foo{
+		        border-bottom-color: blue;
+	            }
+
+	            .super-cta-button{
+		        @extend .foo;
+	            }
+            }
+            </pre>
+
+          </div>
+          <!--End Inheritance with extend -->
+
+         <div class="featureBorder">
+              <h3>@extend only selectors</h3>
+              <p> We can use selector that is not going to be generated in CSS but only in SASS.
+              We use that if we don't want to use this class anywhere in CSS but only to extend it.
+                  Instead of using . or # we use # at start.
+              </p>
+
+            <pre>
+            %highlight{
+	            font-style: italic;
+            }
+
+            .sub-title{
+	            @extend %highlight
+            }
+            </pre>
+        <p>
+            Also we can say to SASS if this class exists use it else do nothing with
+            this syntax :
+        </p>
+            <pre>
+            .sub-title{
+	            @extend %highlight;
+	            @extend .doIExist !optional;
+            }
+            </pre>
+
+        </div>
+
+          <!--extend vs mixin-->
+          <div class="featureBorder">
+          <span  id="extendVSmixin" class="anchor"></span>
+              <h3>@extend vs @mixin</h3>
+              <p> A lot of people say that they work almost the same so why to use each of them?
+                  That's true but let's see what code @extend generates and what @mixin at CSS.
+
+              </p>
+              <p>
+                  SASS code and @extend
+              </p>
+
+            <pre>
+            .error{
+                color: red;
+            }
+
+            .critical-error{
+                @extend .error;
+                border: 1px solid red;
+                font-weight: bold;
+            }
+            </pre>
+              <p>Generated code at CSS :</p>
+            <pre>
+            .error, .critical-error {
+                color: red; }
+
+            .critical-error {
+                border: 1px solid red;
+                font-weight: bold;
+            }
+            </pre>
+              <p>
+                  SASS code and @mixin :
+              </p>
+            <pre>
+            @mixin warning-button{
+                @include warning;
+            }
+
+            .warning-button{
+                @include warning-button;
+            }
+            .cta-button{
+                @include warning-button;
+            }
+            </pre>
+              <p>Generated at CSS with @include :</p>
+            <pre>
+            .warning-button {
+                background-color: orange;
+                color: white;
+            }
+            .warning-button:hover {
+                background-color: #ffdb99;
+            }
+            .cta-button {
+                background-color: orange;
+                color: white;
+            }
+            .cta-button:hover {
+                background-color: #ffdb99;
+            }
+
+            </pre>
+
+
+              <p>Conclusion @extend too many selectors but not replicated styles. On the other side
+              @mixin fewer selectors but duplicated styles. Don't forget that @extend has some limitations
+              as we said above at inheritance with @extend.Though @mixin generates more code
+              with gzipping you won't have any performance problems but choose what is more comfortable for you.
+
+              </p>
+
+          </div>
+
       </section>
 
     </article>

@@ -23,6 +23,30 @@
 
 }
 
+//This is a dummy anchor that you can give them zero width/height
+//and hidden visibility to ensure that these anchors don't affect how your page is displayed.
+//When the user clicks one of the links in your fixed navigation bar,
+//the window will scroll to the top of the dummy anchor
+@mixin anchor{
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: -1;
+  top: -95px;
+  left: 0;
+  visibility: hidden;
+}
+
+@mixin navbar-fixed{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+
+}
+
 @mixin google-fonts($font){
   $font:unquote($font);
   @import url(https://fonts.googleapis.com.css?family=#{$font});
@@ -52,8 +76,9 @@
 
 @mixin box($radius : 6px, $border :1px solid black){
   @include rounded($radius);
-  background-color: #000088;
+
   border: $border;
+
 }
 
 @mixin box-shadow($shadows...){

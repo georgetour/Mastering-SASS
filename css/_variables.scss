@@ -10,6 +10,7 @@ $secondary-color: #f27731;
 $ternary-color : #ccf962;
 $link-color: $secondary-color;
 $menu-item-color: white;
+$navbar-color: #000088;
 
 
 //FONTS
@@ -18,12 +19,11 @@ $headline-font : 'Titillium Web', Georgia, serif;
 
 //SIZES
 $content-width: 960px;
-$header-height: 40px;
+$header-height: 60px;
 $footer-height: 90px;
 
 
 //CODE COLORS
-
 $var-value-Color : rgb(123,102,220);
 $sublime-color : rgb(39,40,34) ;
 
@@ -33,3 +33,6 @@ $simpleBorder : 1px solid black;
 //SHADOWS
 $shadow1 : 10px 10px 5px #888888;
 $shadow2 : -5px 5px 3px green;
+
+//SPACING
+$margin-top-bar : 65px;
