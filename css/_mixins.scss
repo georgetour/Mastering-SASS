@@ -23,6 +23,138 @@
 
 }
 
+@mixin rounded($radius:6px) {
+  border-radius:$radius;
+}
+
+
+
+@mixin box-shadow($shadows...){
+  box-shadow: $shadows;
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+}
+
+
+@mixin box($radius : 6px, $border :1px solid black){
+  @include rounded($radius);
+  border: $border;
+}
+
+@mixin darkButton{
+  background-color: black;
+  color: white;
+  margin: 5px;
+}
+
+@mixin lightButton{
+  background-color: #53c653;
+  color: white;
+  margin: 5px;
+}
+
+@mixin defaultButton{
+  background-color: white;
+  color: black;
+  margin: 5px;
+
+}
+
+@mixin dark-theme{
+  //Variables
+  $text-color: white;
+  $theme-color:  rgb(39,40,34);
+  $secondary-color: #f27731;
+  $footer-color : black;
+  $link-color: $secondary-color;
+  $menu-item-color: white;
+  $navbar-color:black;
+  $shadow1 : 10px 10px 5px #888888;
+  $shadow2 : -5px 5px 3px black;
+
+  //Where To
+  background-color: $theme-color;
+  color: $text-color;
+  #navbar{
+    background-color: $navbar-color;
+    @include box($border :2px solid grey);
+    @include box-shadow($shadow1, $shadow2);
+  }
+  .dropdown-menu{
+    background-color: $navbar-color;
+
+  }
+  #footer{
+    background-color: $footer-color;
+
+  }
+
+}
+
+@mixin light-theme{
+  $text-color: black;
+  $theme-color: white;
+  $secondary-color: #f27731;
+  $footer-color : #53c653;
+  $link-color: $secondary-color;
+  $menu-item-color: white;
+  $navbar-color:   #53c653;
+  $shadow1 : 6px 6px 5px #cccccc;
+  $shadow2 : -3px 3px 3px #ccffeb;
+
+  //Where To
+  background-color: $theme-color;
+  color: $text-color;
+  #navbar{
+    background-color: $navbar-color;
+    @include box($border :1px solid #005580);
+    @include box-shadow($shadow1, $shadow2);
+  }
+  .dropdown-menu{
+    background-color: $navbar-color;
+
+  }
+  #footer{
+    background-color: $footer-color;
+    color: white;
+  }
+
+}
+
+@mixin default-theme{
+  //Default Colors
+  $text-color: black;
+  $theme-color: white;
+  $secondary-color: #f27731;
+  $footer-color:#1a1aff;
+  $link-color: $secondary-color;
+  $menu-item-color: white;
+  $navbar-color:#1a1aff;
+  //SHADOWS
+  $shadow1 : 7px 7px 7px #888888;
+  $shadow2 : -5px 5px 3px #1a1aff;
+
+  //Where To
+  background-color: $theme-color;
+  color: $text-color;
+  #navbar{
+    background-color: $navbar-color;
+    @include box($border :1px solid #005580);
+    @include box-shadow($shadow1, $shadow2);
+  }
+  .dropdown-menu{
+    background-color: $navbar-color;
+
+  }
+  #footer{
+    background-color: $footer-color;
+    color: white;
+
+  }
+
+}
+
+
 //This is a dummy anchor that you can give them zero width/height
 //and hidden visibility to ensure that these anchors don't affect how your page is displayed.
 //When the user clicks one of the links in your fixed navigation bar,
@@ -49,7 +181,7 @@
 
 @mixin google-fonts($font){
   $font:unquote($font);
-  @import url(https://fonts.googleapis.com.css?family=#{$font});
+  @import url(https://fonts.googleapis.com/css?family=#{$font});
 }
 
 
@@ -70,22 +202,7 @@
   }
 }
 
-@mixin rounded($radius:6px) {
-  border-radius:$radius;
-}
 
-@mixin box($radius : 6px, $border :1px solid black){
-  @include rounded($radius);
-
-  border: $border;
-
-}
-
-@mixin box-shadow($shadows...){
-  box-shadow: $shadows;
-  -moz-box-shadow: $shadows;
-  -webkit-box-shadow: $shadows;
-}
 
 @mixin fancy-links{
   a{

@@ -2,16 +2,59 @@
 programming language COOL! So if the variable value changes it changes everywhere.
 No need for repeating */
 
+//THEME
+//Allowed values : Dark, Light, Default
+$theme : null;
+
 
 // COLORS
-$text-color: #222222;
-$theme-color: #170a48;
-$secondary-color: #f27731;
-$ternary-color : #ccf962;
-$link-color: $secondary-color;
-$menu-item-color: white;
-$navbar-color: #000088;
+//Default Colors
+$text-color: null;
+$theme-color: null;
+$secondary-color: null;
+$footer-color: null;
+$link-color: null;
+$menu-item-color: null;
+$navbar-color: null;
+//SHADOWS
+$shadow1 : 10px 10px 5px #888888;
+$shadow2 : -5px 5px 3px green;
 
+//Dark colors
+@if $theme == Dark{
+	$text-color: white;
+	$theme-color:  rgb(39,40,34);
+	$secondary-color: #f27731;
+	$footer-color : black;
+	$link-color: $secondary-color;
+	$menu-item-color: white;
+	$navbar-color:black;
+}
+
+//Light Colors
+@else if($theme == Light){
+  $text-color: purple;
+  $theme-color: #1affb2;
+  $secondary-color: #f27731;
+  $footer-color : black;
+  $link-color: $secondary-color;
+  $menu-item-color: white;
+  $navbar-color: #000088;
+}
+//Default
+@else {
+  //Default Colors
+  $text-color: blue;
+  $theme-color: white;
+  $secondary-color: #f27731;
+  $footer-color: #b3ccff;
+  $link-color: $secondary-color;
+  $menu-item-color: white;
+  $navbar-color: #005ce6;
+  //SHADOWS
+  $shadow1 : 10px 10px 5px #888888;
+  $shadow2 : -5px 5px 3px green;
+}
 
 //FONTS
 $text-font: "Alegreya Sans", Arial, sans-serif;
@@ -29,10 +72,6 @@ $sublime-color : rgb(39,40,34) ;
 
 //BORDER
 $simpleBorder : 1px solid black;
-
-//SHADOWS
-$shadow1 : 10px 10px 5px #888888;
-$shadow2 : -5px 5px 3px green;
 
 //SPACING
 $margin-top-bar : 65px;

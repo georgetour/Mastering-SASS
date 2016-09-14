@@ -22,9 +22,9 @@
 
 </head>
 
-<body>
+<body class="defaultTheme">
 
-    <nav id="main-menu" >
+    <nav id="navbar" >
       <ul id="nav" class="navbar navbar-nav">
         <li ><a class="scroll topLinks" href="#main">Start</a></li>
         <li ><a class="scroll topLinks" href="#main">Installation</a></li>
@@ -46,7 +46,7 @@
                       <li class="menuExtraList"><a class="scroll" href="#functions">Functions</a></li>
                       <li class="menuExtraList"><a class="scroll" href="#inheritance">Inheritance</a></li>
                       <li class="menuExtraList"><a class="scroll" href="#extendVSmixin">@extend vs @mixin</a></li>
-                      <li class="menuExtraList"><a class="scroll" href="#media-queries">Media Queries</a></li>
+                      <li class="menuExtraList"><a class="scroll" href="#ifElse">@if and @else</a></li>
                   </ul>
               </li>
           </div>
@@ -55,11 +55,19 @@
     </nav>
 
 
-
+    <a target="_blank" href="https://github.com/georgetour/Mastering-SASS-v0.8"><img class="forkMe" src="images/fork-me-right-blue.png"></a>
 <div id="main" role="main">
 
     <article id="content">
       <h1 id="starting">Welcome to SASS!</h1>
+
+        <h4>A little demonstration of the power of SASS.</h4>
+        <h2>Click to change themes.</h2>
+        <div style="margin-bottom: 10px;padding: 5px">
+            <button id="darkButton" class="darkButton">Dark Theme</button>
+            <button id="lightButton" class="lightButton">Light Theme</button>
+            <button id="defaultButton" class="defaultButton">Default</button>
+        </div>
         <p>SASS is a preprocessor that makes CSS more powerful since you can work with variables, partial, mixin, nesting,arguments
         and many other amazing features that you find only in programming languages.
         </p>
@@ -75,9 +83,7 @@
             you power and simplicity as I said above.
             </p>
             <p>For example let's say your client wants the color of some specific articles
-            to be changed .Those articles have classes with many properties.If you had stored
-                the color in a variable thanks to SASS instead of changing it everywhere
-                you just change the variable value .
+            to be changed .Those articles have classes with many properties.If you had stored the color in a variable thanks to SASS instead of changing it everywhere you just change the variable value .
             </p>
         </section>
         <section>
@@ -106,8 +112,8 @@
             </p>
         <pre>
         body {
-            font-family: sans-serif;
-            color: $text-color;
+          font-family: sans-serif;
+          color: $text-color;
         }
         </pre>
         </div>
@@ -118,11 +124,11 @@
         <!-- Partial -->
         <div  class="featureBorder">
         <span id="partial" class="anchor"></span>
-            <h3>Partial</h3>
+        <h3>Partial</h3>
         <p>Also we can use partial and get content from another underscored  scss file .We just put @import rule what to get.</p>
         We create a file that will hold all variables called : _variables.scss
-            <p class="sublimeColor"> </p>
-            <p>SCSS @import works like javascript require and PHP include.We call the file where we will use it like that:</p>
+        <p class="sublimeColor"> </p>
+        <p>SCSS @import works like javascript require and PHP include.We call the file where we will use it like that:</p>
 
         <pre>
         @import "variables" ;
@@ -141,7 +147,7 @@
         <pre>
         @mixin warning{
           background-color: orange;
-	      color: white ;
+          color: white ;
         }
         </pre>
         <p>And we call it :</p>
@@ -153,10 +159,10 @@
           <p>or to get multiple properties by this syntax</p>
         <pre>
         @mixin large-text{
-            font:{
-            size: 40px;
-            weight: bold ;
-         }
+          font:{
+          size: 40px;
+          weight: bold ;
+          }
         }
         </pre>
         </div>
@@ -168,12 +174,12 @@
           <p>We can nest a mixin or multiple mixing inside other mixins.</p>
          <pre>
          @mixin rounded{
-           border-radius:6px;
+          border-radius:6px;
          }
 
          @mixin box{
-             @include rounded;
-	     background-color: #000088;
+          @include rounded;
+          background-color: #000088;
          }
          </pre>
         </div>
@@ -181,11 +187,11 @@
 
           <!--Mixin Arguments-->
         <div class="featureBorder">
-              <h3>Mixin Arguments</h3>
-              <p>We can have mixins with arguments like in a programming language.</p>
+         <h3>Mixin Arguments</h3>
+         <p>We can have mixins with arguments like in a programming language.</p>
          <pre>
          @mixin rounded($radius) {
-           border-radius:$radius;
+          border-radius:$radius;
          }
          </pre>
          <p>
@@ -193,27 +199,27 @@
          </p>
          <pre>
          @mixin box{
-           @include rounded(5px);
-           background-color: #000088;
+          @include rounded(5px);
+          background-color: #000088;
          }
          </pre>
          <p>Or a little more complicated with default values so you don't have to pass arguments</p>
 
         <pre>
         @mixin rounded($radius : 6px) {
-            border-radius:$radius;
+          border-radius:$radius;
         }
 
         @mixin box($radius : 6px, $border :1px solid black){
-            @include rounded($radius);
-            background-color: #000088;
-            border: $border;
+          @include rounded($radius);
+          background-color: #000088;
+          border: $border;
         }
         </pre>
         <p>And if we call it we can only pass the argument we want and the other will be our default</p>
         <pre>
         #header{
-	    @include box($border :1px solid pink);
+         @include box($border :1px solid pink);
         }
         </pre>
        </div>
@@ -227,19 +233,19 @@
            </p>
         <pre>
         @mixin box-shadow($shadows...){
-            box-shadow: $shadows;
-            -moz-box-shadow: $shadows;
-            -webkit-box-shadow: $shadows;
+          box-shadow: $shadows;
+          -moz-box-shadow: $shadows;
+          -webkit-box-shadow: $shadows;
         }
         </pre>
             <p>And it works like this:</p>
         <pre>
-            $shadow1 : 10px 10px 5px #888888;
-            $shadow2 : -5px 5px 3px green;
+        $shadow1 : 10px 10px 5px #888888;
+        $shadow2 : -5px 5px 3px green;
 
-            #header {
-	        @include box-shadow($shadow1,$shadow2);
-            }
+        #header{
+          @include box-shadow($shadow1,$shadow2);
+        }
         </pre>
         </div>
         <!--End Variables arguments-->
@@ -250,19 +256,19 @@
 
               </p>
         <pre>
-            @mixin apply-to-ie-6{
-                * html{
-                @content ;
-                }
-            }
+        @mixin apply-to-ie-6{
+          * html{
+          @content ;
+          }
+        }
         </pre>
               <p>So we are taking the mixin and we will apply it only to ie6.</p>
         <pre>
-            @include apply-to-ie-6{
-	        body{
-		    color: #000088;
-                }
-            }
+        @include apply-to-ie-6{
+          body{
+          color: #000088;
+          }
+        }
         </pre>
         <a href="https://css-tricks.com/snippets/css/browser-specific-hacks/">Find all the browser hacks here</a>
           </div>
@@ -271,26 +277,33 @@
         <div  class="featureBorder">
         <span  id="importFonts" class="anchor"></span>
               <h3>@import fonts</h3>
-              <p>Let's see how you can import font in SASS.</p>
+              <p>We create a mixin that will have one argument and it's gonna @import 
+              from url the font.
+              </p>
             <p>Using interpolation with #{$variableHere} only.Can only be used with import. </p>
-        <pre>
-            @mixin google-fonts($font){
-             $font:unquote($font);
-             @import url(https://fonts.googleapis.com.css?family=<span>#{$font}</span>);
-            }
-        </pre>
-        <pre>
-            $text-font: "Alegreya Sans", Arial, sans-serif;
-            $headline-font : "Titillium Web", Georgia, serif;
-        </pre>
-            <p>And you call it like that:</p>
-        <pre>
-            @include google-fonts("Alegreya+Sans");
-            @include google-fonts("Titillium+Web");
 
-            h1, h2, h3, h4 {
-            font-family: $headline-font;
-            }
+        <pre>
+        @mixin google-fonts($font){
+          $font:unquote($font);
+          @import url(https://fonts.googleapis.com.css?family=<span>#{$font}</span>);
+        }
+        </pre>
+         <p>
+            Then we will store to variables the fonts :
+         </p>
+        <pre>
+        $text-font: "Alegreya Sans", Arial, sans-serif;
+        $headline-font : "Titillium Web", Georgia, serif;
+        </pre>
+            <p>Finally we will call the mixins two times and pass the parameters. We then insert the font-family at h1, h2, h3, h4 with the variable :
+            </p>
+        <pre>
+        @include google-fonts("Alegreya+Sans");
+        @include google-fonts("Titillium+Web");
+
+        h1, h2, h3, h4 {
+          font-family: $headline-font;
+        }
         </pre>
 
         </div>
@@ -302,12 +315,13 @@
               <h3>Media queries</h3>
               <p>Same syntax as CSS media queries but more powerful since we can nest them where we want.</p>
          <pre>
-            #main {
-	        width: $content-width;
-	        @media only screen and (max-width: 960px){
-                width: auto;
-                max-width: $content-width;
-            }
+         #main{
+          width: $content-width;
+          @media only screen and (max-width: 960px){
+            width: auto;
+            max-width: $content-width;
+          }
+         }
          </pre>
         </div>
        <!--End media queries-->
@@ -319,34 +333,34 @@
               something everywhere we can do it really easily.
               </p>
          <pre>
-            @mixin xsmall-screens{
-                @media only screen and (max-width:320px){
-                @content;
-                }
-            }
-            @mixin small-screens{
-                @media only screen and (max-width:480px){
-                @content;
-                }
-            }
-            @mixin medium-screens{
-                @media only screen and (max-width:680px){
-                @content;
-                }
-            }
-            @mixin large-screens{
-                @media only screen and (max-width:960px){
-                @content;
-                }
-            }
+         @mixin xsmall-screens{
+          @media only screen and (max-width:320px){
+            @content;
+          }
+         }
+         @mixin small-screens{
+          @media only screen and (max-width:480px){
+            @content;
+          }
+         }
+         @mixin medium-screens{
+          @media only screen and (max-width:680px){
+            @content;
+          }
+         }
+         @mixin large-screens{
+          @media only screen and (max-width:960px){
+            @content;
+          }
+         }
 
          </pre>
          <p>And we call the mixin we want where we want simple like that:</p>
             <pre>
             body{
-                @include large-screens{
+              @include large-screens{
                 font-size: 120%
-                }
+              }
             }
             </pre>
 
@@ -383,24 +397,24 @@
              saying make the $link-color darker by 15% when we hover on it.
              </p>
             <pre>
-            a {
-	            color: $link-color;
+            a{
+              color: $link-color;
 
-	            &:hover{
-		        color: darken($link-color,15%);
-	            }
+              &:hover{
+                color: darken($link-color,15%);
+              }
             }
 
             </pre>
               <p>Lighten function:</p>
             <pre>
             @mixin warning{
-                background-color: orange;
-                color: white ;
+              background-color: orange;
+              color: white ;
 
-                &:hover{
+              &:hover{
                 background-color: lighten(orange,30%);
-                }
+              }
             }
             </pre>
               <p>Hover on the orange button below to see what we did easily with the above mixin.</p>
@@ -437,9 +451,8 @@
 
             <p> Here with this function we will have em if we give pixels</p>
             <pre>
-
             @function em($pixels,$context:16px){
-                @return ($pixels/$context)*1em;
+              @return ($pixels/$context)*1em;
             }
 
             </pre>
@@ -448,7 +461,7 @@
               </p>
             <pre>
             @function col-width($columns:12,$page-width:100%,$gap:1%){
-                @return ($page-width - $gap*($columns)) / $columns;
+              @return ($page-width - $gap*($columns)) / $columns;
             }
             </pre>
 
@@ -456,9 +469,9 @@
 
             <pre>
             .sidebar {
-                display: inline-block;
-                width:2 * col-width();
-                background-color: lightgray;
+              display: inline-block;
+              width:2 * col-width();
+              background-color: lightgray;
             }
             </pre>
               <div class="alignCenter">
@@ -530,7 +543,7 @@
               </p>
             <pre>
             .error{
-                color: red;
+              color: red;
             }
 
             .critical-error{
@@ -542,8 +555,8 @@
             <p>Or we can use any combination we want for example @extend + @include, inheritance and mixin :</p>
             <pre>
             .cta-button{
-	            @extend .warning-button;
-	            @include rounded;
+              @extend .warning-button;
+              @include rounded;
             }
             </pre>
               <button class="cta-button">extend+include</button>
@@ -554,33 +567,33 @@
               <p class="error">Wrong</p>
             <pre>
             .cta-button{
-	            @extend .warning-button;
-	            @include rounded;
+              @extend .warning-button;
+              @include rounded;
             }
 
             @media screen and (min-width: 960px) {
-	            .super-cta-button{
-		        @extend .cta-button;
-	            }
+              .super-cta-button{
+                @extend .cta-button;
+              }
             }
 
             </pre>
             <p>Correct</p>
             <pre>
             @media screen and (min-width: 960px) {
-	            .foo{
-		        border-bottom-color: blue;
-	            }
-
-	            .super-cta-button{
-		        @extend .foo;
-	            }
+              .foo{
+                border-bottom-color: blue;
+              }
+              .super-cta-button{
+                @extend .foo;
+              }
             }
             </pre>
 
           </div>
           <!--End Inheritance with extend -->
 
+         
          <div class="featureBorder">
               <h3>@extend only selectors</h3>
               <p> We can use selector that is not going to be generated in CSS but only in SASS.
@@ -590,11 +603,11 @@
 
             <pre>
             %highlight{
-	            font-style: italic;
+              font-style: italic;
             }
 
             .sub-title{
-	            @extend %highlight
+              @extend %highlight
             }
             </pre>
         <p>
@@ -603,8 +616,8 @@
         </p>
             <pre>
             .sub-title{
-	            @extend %highlight;
-	            @extend .doIExist !optional;
+              @extend %highlight;
+              @extend .doIExist !optional;
             }
             </pre>
 
@@ -624,23 +637,24 @@
 
             <pre>
             .error{
-                color: red;
+              color: red;
             }
 
             .critical-error{
-                @extend .error;
-                border: 1px solid red;
-                font-weight: bold;
+              @extend .error;
+              border: 1px solid red;
+              font-weight: bold;
             }
             </pre>
               <p>Generated code at CSS :</p>
             <pre>
             .error, .critical-error {
-                color: red; }
+              color: red; 
+            }
 
-            .critical-error {
-                border: 1px solid red;
-                font-weight: bold;
+            .critical-error{
+              border: 1px solid red;
+              font-weight: bold;
             }
             </pre>
               <p>
@@ -648,31 +662,31 @@
               </p>
             <pre>
             @mixin warning-button{
-                @include warning;
+              @include warning;
             }
 
             .warning-button{
-                @include warning-button;
+              @include warning-button;
             }
             .cta-button{
-                @include warning-button;
+              @include warning-button;
             }
             </pre>
               <p>Generated at CSS with @include :</p>
             <pre>
             .warning-button {
-                background-color: orange;
-                color: white;
+              background-color: orange;
+              color: white;
             }
             .warning-button:hover {
-                background-color: #ffdb99;
+              background-color: #ffdb99;
             }
             .cta-button {
-                background-color: orange;
-                color: white;
+              background-color: orange;
+              color: white;
             }
             .cta-button:hover {
-                background-color: #ffdb99;
+              background-color: #ffdb99;
             }
 
             </pre>
@@ -680,13 +694,43 @@
 
               <p>Conclusion @extend too many selectors but not replicated styles. On the other side
               @mixin fewer selectors but duplicated styles. Don't forget that @extend has some limitations
-              as we said above at inheritance with @extend.Though @mixin generates more code
+              as we said above at inheritance. Though @mixin generates more code
               with gzipping you won't have any performance problems but choose what is more comfortable for you.
 
               </p>
 
           </div>
 
+            <!--if and else directives-->
+            <div class="featureBorder">
+            <span  id="ifElse" class="anchor"></span>
+
+              <h3>@if and @else directives</h3>
+              <p> In SASS we have if and else directives that work exactly like 
+              programming languages. If you are not familiar with these conditions 
+              you can understand it below.
+              </p>
+              <p>We are setting a variable $contrast : high. If $contrast == high then color: black. Else if $contrast == low then color #999. In all other cases
+              color: $text-color .
+              </p>
+
+            <pre>
+            $contrast : high;
+            body {
+              @if ($contrast==high){
+              color : black;
+            }
+            @else if $constrast == low{
+              color : #999;
+            }   
+            @else{
+              color:$text-color;
+            }
+            </pre>
+        
+
+        </div>
+        <!--End if and else directives-->
       </section>
 
     </article>
@@ -696,7 +740,8 @@
 </div>
 
   <footer id="footer">
-    
+    <div>Created by George Tourtsinakis and it's open source so do anything you want.</div>
+
   </footer>
 </body>
 </html>
