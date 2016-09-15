@@ -3,6 +3,69 @@ programming language COOL! So if the variable value changes it changes everywher
 No need for repeating */
 @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans);
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web);
+.textsize-1 {
+  font-size: 5px; }
+
+.textsize-2 {
+  font-size: 10px; }
+
+.textsize-3 {
+  font-size: 15px; }
+
+.textsize-4 {
+  font-size: 20px; }
+
+.textsize-5 {
+  font-size: 25px; }
+
+.textsize-6 {
+  font-size: 30px; }
+
+.cat-animal {
+  background-image: url("../images/cat.png"); }
+
+.dog-animal {
+  background-image: url("../images/dog.png"); }
+
+.bird-animal {
+  background-image: url("../images/bird.png"); }
+
+.article {
+  color: #0052cc; }
+
+.picture-2 {
+  width: 20%; }
+
+.picture-4 {
+  width: 40%; }
+
+.picture-6 {
+  width: 60%; }
+
+.picture-8 {
+  width: 80%; }
+
+.picture-10 {
+  width: 100%; }
+
+.dark-blue {
+  color: #0052cc; }
+
+.normal-blue {
+  color: #1a75ff; }
+
+.light-blue {
+  color: #b3d1ff; }
+
+.garage {
+  color: blue; }
+
+.house {
+  color: red; }
+
+.cellar {
+  color: green; }
+
 a {
   font-style: italic;
   text-decoration: none; }
@@ -100,6 +163,9 @@ a {
     background-color: #1a1aff;
     color: white; }
 
+pre {
+  line-height: 20px; }
+
 body {
   font-family: "Alegreya Sans", Arial, sans-serif;
   font-size: 1.875em; }
@@ -109,6 +175,11 @@ body {
 
 .featureBorder {
   border: 1px solid black;
+  position: relative;
+  margin-top: 20px;
+  padding: 10px; }
+
+.installation {
   position: relative;
   margin-top: 20px;
   padding: 10px; }
@@ -201,7 +272,10 @@ a:hover {
   text-align: center; }
 
 #footer {
+  padding: 5px;
   margin-top: 20px;
-  height: 90px; }
+  height: 60px; }
+  #footer div a {
+    color: white; }
 
 /*# sourceMappingURL=main.css.map */

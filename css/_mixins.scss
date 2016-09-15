@@ -61,12 +61,10 @@
 }
 
 @mixin dark-theme{
-  //Variables
+  //Variables for dark-theme
   $text-color: white;
   $theme-color:  rgb(39,40,34);
-  $secondary-color: #f27731;
   $footer-color : black;
-  $link-color: $secondary-color;
   $menu-item-color: white;
   $navbar-color:black;
   $shadow1 : 10px 10px 5px #888888;
@@ -82,21 +80,17 @@
   }
   .dropdown-menu{
     background-color: $navbar-color;
-
   }
   #footer{
     background-color: $footer-color;
-
   }
-
 }
 
 @mixin light-theme{
+  //Variables for light-theme
   $text-color: black;
   $theme-color: white;
-  $secondary-color: #f27731;
   $footer-color : #53c653;
-  $link-color: $secondary-color;
   $menu-item-color: white;
   $navbar-color:   #53c653;
   $shadow1 : 6px 6px 5px #cccccc;
@@ -112,22 +106,18 @@
   }
   .dropdown-menu{
     background-color: $navbar-color;
-
   }
   #footer{
     background-color: $footer-color;
     color: white;
   }
-
 }
 
 @mixin default-theme{
   //Default Colors
   $text-color: black;
   $theme-color: white;
-  $secondary-color: #f27731;
   $footer-color:#1a1aff;
-  $link-color: $secondary-color;
   $menu-item-color: white;
   $navbar-color:#1a1aff;
   //SHADOWS
@@ -144,14 +134,11 @@
   }
   .dropdown-menu{
     background-color: $navbar-color;
-
   }
   #footer{
     background-color: $footer-color;
     color: white;
-
   }
-
 }
 
 

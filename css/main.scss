@@ -2,6 +2,60 @@
 @import "variables" ;
 @import "mixins";
 
+@for $i from 1 through 6 {
+	.textsize-#{$i}{
+		font-size: $i * 5px;
+	}
+}
+
+$images: cat, dog, bird;
+
+@each $image in $images{
+	.#{$image}-animal{
+		background-image: url('../images/#{$image}.png');
+
+	}
+}
+
+$blue-colors : (
+	dark-blue: #0052cc,
+	normal-blue:#1a75ff,
+	light-blue : #b3d1ff
+);
+
+.article{
+	color: map-get($blue-colors,dark-blue);
+}
+
+$map : (
+	//Key  / Value
+	garage : blue,
+	house : red,
+	cellar : green
+);
+
+$j : 2;
+@while $j <= 10{
+	.picture-#{$j}{
+		width: $j *10%;
+	}
+	$j: $j + 2;
+}
+
+
+@each $blue, $color in $blue-colors{
+	.#{$blue}{
+		color: $color;
+	}
+}
+
+@each $key, $keyColor in $map{
+	.#{$key}{
+	color: $keyColor;
+}
+}
+
+
 
 @include google-fonts("Alegreya+Sans");
 @include google-fonts("Titillium+Web");
@@ -77,6 +131,10 @@
 	@include default-theme;
 }
 
+pre{
+	line-height: 20px;
+}
+
 $contrast : high;
 body {
 
@@ -96,6 +154,12 @@ body {
 	margin-top: 20px;
 	padding: 10px;
 
+}
+
+.installation{
+	position: relative;
+	margin-top: 20px;
+	padding: 10px;
 }
 
 .anchor {
@@ -139,10 +203,6 @@ a {
 
 
   #navbar {
-
-
-
-
 	  @include navbar-fixed;
 
 	  .navbar-nav {
@@ -199,7 +259,6 @@ a {
 
 	}
 
-
 	.sidebar {
 		display: inline-block;
 		width:2 * col-width();
@@ -227,7 +286,16 @@ a {
 }
 
 #footer {
+	padding: 5px;
 	margin-top: 20px;
 	height: $footer-height ;
+
+	div{
+		a{
+
+			color: $menu-item-color;
+
+		}
+	}
 
 }
