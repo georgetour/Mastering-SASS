@@ -5,6 +5,5 @@
 <br>- Basic and Advanced Topics by category.
 
 -TO DO
-<br>Soon will upload it to internet and my server.
 <br>Add comment plugin
 
