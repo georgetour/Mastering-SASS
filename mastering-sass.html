@@ -15,7 +15,7 @@
   <script defer src="javascript/jquery.scrollTo.min.js"></script>
   <script defer  src="javascript/main.js"></script>
   <script defer src="javascript/bootstrap.min.js"></script>
-  <script src="javascript/prism.js"></script>
+  <script defer src="javascript/prism.js"></script>
 
 
   <!--[if lt IE 9]>
@@ -23,7 +23,7 @@
   <![endif]-->
 
   <link  href="css/main.min.css" rel="stylesheet" type="text/css" >
-
+   <?php include_once("analyticstracking.php") ?>
 </head>
 
 <body class="defaultTheme">
@@ -61,11 +61,11 @@
 	</nav>
 
 
-	<a  href="https://github.com/georgetour/Mastering-SASS-v0.8"><img class="forkMe" src="images/fork-me-right-blue.png"></a>
+	<a target="_blank"  href="https://github.com/georgetour/Mastering-SASS-v0.8"><img class="forkMe" src="images/fork-me-right-blue.png"></a>
 <div id="main" role="main">
 
 	<article id="content">
-	  <h1 id="starting">Learn SASS. From Beginner to Master!</h1>
+	  <h1 id="starting">Learn SASS. From Beginner to Master !</h1>
 		<h4>In this article you will find examples with explanation so you can learn and master SASS.</h4>
 		<h2>Click to change themes.</h2>
 		<p>Easily achieved with SASS.</p>
@@ -100,6 +100,7 @@
 			require it.
 			</p>
 		</section>
+
 <section id="introduction">
       <div class="installation">
           <span id="installation" class="anchor"></span>
@@ -112,9 +113,6 @@
                   frameborder="0" allowfullscreen>
           </iframe>
       </div>
-
-
-
 
 <!--Variables section-->
 <div  class="featureBorder">
