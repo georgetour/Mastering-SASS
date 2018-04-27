@@ -4,6 +4,4 @@
 <br>- You can change themes with button click and mixin.
 <br>- Basic and Advanced Topics by category.
 
--TO DO
-<br>Add comment plugin
 
